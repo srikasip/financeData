@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714090135) do
+ActiveRecord::Schema.define(version: 20160714102739) do
+
+  create_table "stock_intervals", force: true do |t|
+    t.string   "ticker"
+    t.float    "open"
+    t.float    "close"
+    t.datetime "interval"
+    t.integer  "volume"
+    t.float    "percChange"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tickers", force: true do |t|
     t.string   "ticker"

@@ -1,0 +1,2 @@
+module StockIntervalsHelper
+end

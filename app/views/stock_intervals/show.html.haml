@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Ticker:
+  = @stock_interval.ticker
+%p
+  %b Open:
+  = @stock_interval.open
+%p
+  %b Close:
+  = @stock_interval.close
+%p
+  %b Interval:
+  = @stock_interval.interval
+%p
+  %b Volume:
+  = @stock_interval.volume
+%p
+  %b Percchange:
+  = @stock_interval.percChange
+
+= link_to 'Edit', edit_stock_interval_path(@stock_interval)
+\|
+= link_to 'Back', stock_intervals_path
