@@ -1,24 +1,28 @@
-%p#notice= notice
+%h1= "Listing transactions for " + @ticker
 
-%p
-  %b Ticker:
-  = @stock_interval.ticker
-%p
-  %b Open:
-  = @stock_interval.open
-%p
-  %b Close:
-  = @stock_interval.close
-%p
-  %b Interval:
-  = @stock_interval.interval
-%p
-  %b Volume:
-  = @stock_interval.volume
-%p
-  %b Percchange:
-  = @stock_interval.percChange
+%table
+  %thead
+    %tr
+      %th Ticker
+      %th Open
+      %th Close
+      %th Interval
+      %th Volume
+      %th Percchange
+      %th
+      %th
 
-= link_to 'Edit', edit_stock_interval_path(@stock_interval)
-\|
+  %tbody
+    - @stock_intervals.each do |stock_interval|
+      %tr
+        %td= stock_interval.ticker
+        %td= stock_interval.open
+        %td= stock_interval.close
+        %td= stock_interval.interval
+        %td= stock_interval.volume
+        %td= stock_interval.percChange
+        %td= link_to 'Edit', edit_stock_interval_path(stock_interval)
+        %td= link_to 'Destroy', stock_interval, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+
 = link_to 'Back', stock_intervals_path

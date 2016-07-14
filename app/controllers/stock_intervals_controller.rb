@@ -22,11 +22,16 @@ class StockIntervalsController < ApplicationController
     end
   end
 
-  def show
-    ticker = params[:id]
-    @stock_intervals = StockInterval.where(ticker: ticker).order(:interval)
-    #@stock_interval = StockInterval.where(ticker: ticker).order(:interval).Top(1)
-    
+  def show      
+    begin
+      @stock_interval = StockInterval.find(params[:id].to_i)
+      @ticker = @stock_interval.ticker
+    rescue
+      @ticker = params[:id]
+    ensure
+      @stock_intervals = StockInterval.where(ticker: @ticker).order(:interval)
+    end
+
   end
 
   # GET /stock_intervals/new
