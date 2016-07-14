@@ -1,5 +1,5 @@
 class StockIntervalsController < ApplicationController
-  before_action :set_stock_interval, only: [:show, :edit, :update, :destroy]
+  before_action :set_stock_interval, only: [:edit, :update, :destroy]
 
   # GET /stock_intervals
   # GET /stock_intervals.json
@@ -23,6 +23,10 @@ class StockIntervalsController < ApplicationController
   end
 
   def show
+    ticker = params[:id]
+    @stock_intervals = StockInterval.where(ticker: ticker).order(:interval)
+    #@stock_interval = StockInterval.where(ticker: ticker).order(:interval).Top(1)
+    
   end
 
   # GET /stock_intervals/new

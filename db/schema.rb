@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714102739) do
+ActiveRecord::Schema.define(version: 20160714121908) do
 
   create_table "stock_intervals", force: true do |t|
     t.string   "ticker"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 20160714102739) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "stock_intervals", ["interval"], name: "index_stock_intervals_on_interval"
+  add_index "stock_intervals", ["ticker"], name: "index_stock_intervals_on_ticker"
 
   create_table "tickers", force: true do |t|
     t.string   "ticker"
