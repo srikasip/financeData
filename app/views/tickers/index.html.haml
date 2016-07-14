@@ -17,10 +17,4 @@
 
 %br
 
-- if @tickers.count == 0
-  %h1 Load Tickers
-  = link_to 'Load Tickers From File', {:controller => :tickers, :action => "load_tickers"}
-  %br 
-  %br
-
 = link_to 'New Ticker', new_ticker_path

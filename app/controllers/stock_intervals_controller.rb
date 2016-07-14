@@ -7,21 +7,6 @@ class StockIntervalsController < ApplicationController
     @stock_intervals = StockInterval.all
   end
 
-  # GET /stock_intervals/1
-  # GET /stock_intervals/1.json
-  def load_intervals
-    @tickers = Ticker.all
-    for ticker in @tickers
-      #get file
-      partialPath = "config/FinancialDataFiles/nasdaq/" + ticker.ticker.downcase + ".us.txt"
-      filePath = Rails.root.join(partialPath)
-      @stringReturn = "----\n"
-      # File.open(filePath).each do |line|
-      #   @stringReturn = @stringReturn + "\n" + line + "\n"
-      # end
-    end
-  end
-
   def show      
     begin
       @stock_interval = StockInterval.find(params[:id].to_i)

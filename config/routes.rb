@@ -2,8 +2,6 @@ DataAPI::Application.routes.draw do
   resources :stock_intervals
 
   resources :tickers
-  get '/tickers#load_tickers' => 'tickers#load_tickers'
-  get '/stock_intervals#load_intervals' => 'stock_intervals#load_intervals'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
