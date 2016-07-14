@@ -1,0 +1,26 @@
+%h1 Listing tickers
+%table
+  %thead
+    %tr
+      %th Ticker
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tickers.each do |ticker|
+      %tr
+        %td= ticker.ticker
+        %td= link_to 'Show', ticker
+        %td= link_to 'Edit', edit_ticker_path(ticker)
+        %td= link_to 'Destroy', ticker, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+- if @tickers.count == 0
+  %h1 Load Tickers
+  = link_to 'Load Tickers From File', {:controller => :tickers, :action => "load_tickers"}
+  %br 
+  %br
+
+= link_to 'New Ticker', new_ticker_path
