@@ -2,7 +2,12 @@ namespace :upload do
   desc "TODO"
   task nasdaq: :environment do
     #get file
-    @tickers = Ticker.all
+    existingTickers = StockInterval.uniq.pluck(:ticker)
+    @tickers = Ticker.where.not(ticker: existingTickers)
+    puts "Existing: " + existingTickers.count.to_s
+    puts "New: " + @tickers.count.to_s
+
+    
     for ticker in @tickers
       partialPath = "config/FinancialDataFiles/nasdaq/" + ticker.ticker.downcase + ".us.txt"
       filePath = Rails.root.join(partialPath)
